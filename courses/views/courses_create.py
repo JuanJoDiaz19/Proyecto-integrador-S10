@@ -2,7 +2,7 @@ from django.db import IntegrityError
 from django.shortcuts import render, redirect
 from django.views import View
 from courses.forms.create_course_form import CreateCourseForm
-from courses.models import Professor
+from courses.models import Course, Professor
 from courses.util.query_util import get_professor_by_id
 
 
@@ -22,11 +22,17 @@ class CoursesCreate(View):
         
         
     def post(self, request):
-        print(">>>>>")
         print(request.POST)
-        form = CreateCourseForm(request.POST)
-        print(form)
-        #form.save()
+        name = request.POST['name']
+        faculty = request.POST['faculty']
+        description = request.POST['description']    
+        professorFK = request.POST['professor']  
+        professor = get_professor_by_id(professorFK)
+        course = Course(name=name, faculty=faculty, description=description, professor= professor)
+        course.save()
+
+        del request.session['professor']
+
         return redirect("/")
     
     
