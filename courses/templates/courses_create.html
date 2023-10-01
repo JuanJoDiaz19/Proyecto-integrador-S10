@@ -10,6 +10,14 @@
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
+        {% if professor == None %}
+            <p><a href="/chooseprofessor">Escoger profesor</a></p>
+        {% else %}
+            <p><a href="/chooseprofessor">{{professor.name}}</a></p>
+        {% endif %}
+
+        <input type="hidden" name="professor" value="{{professor.id}}">
+
         <button>Registrar</button>
     </form>
     

@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from courses.views.professor_list import ProfessorList
 from courses.views.professor_create import ProfessorCreate
 from courses.views.courses_create import CoursesCreate
 from courses.views.courses_main import CoursesMain
@@ -31,4 +32,5 @@ urlpatterns = [
     path('signup/', Signup.as_view(), name="signup"),
     path('signin/', Signin.as_view(), name="signin"),
     path('signout/', CoursesMain.signout, name="signout"),
+    path('chooseprofessor/', ProfessorList.as_view(), name="chooseprofessor"),
 ]
