@@ -16,21 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from courses.views.professor_list import ProfessorList
-from courses.views.professor_create import ProfessorCreate
-from courses.views.courses_create import CoursesCreate
-from courses.views.courses_main import CoursesMain
-from courses.views.signin import Signin
-from courses.views.signup import Signup
+from courses.views.basic_info import BasicInfo
+from courses.views.contact_direction import ContactDirection
+from courses.views.comments import Comments
+from courses.views.summary import Summary
+from courses.views.users_view import UsersView
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', CoursesMain.as_view(), name="courses"),
-    path('createcourse/', CoursesCreate.as_view(), name="createcourse"),
-    path('createprofessor/', ProfessorCreate.as_view(), name="createprofessor"),
-    path('signup/', Signup.as_view(), name="signup"),
-    path('signin/', Signin.as_view(), name="signin"),
-    path('signout/', CoursesMain.signout, name="signout"),
-    path('chooseprofessor/', ProfessorList.as_view(), name="chooseprofessor"),
+    path('', BasicInfo.as_view(), name="login"),
+    path('contact_direction/', ContactDirection.as_view(), name="contact_direction"),
+    path('comments/', Comments.as_view(), name="comments"),
+    path('summary/', Summary.as_view(), name="summary"),
+    path('users_view/', UsersView.as_view(), name="users_view"),
 ]

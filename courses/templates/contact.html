@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Direcion de contacto</h1>
+    <form method="POST" action="/contact_direction/">
+        {% csrf_token %} 
+      <label>Direction</label>
+      <input type="text" name="direction" placeholder="Direction">
+      <label>Phone</label>
+      <input type="number" name="phone_number" placeholder="Phone number">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Email">
+      <button type="Submit"> Siguientes </button> 
+    </form>
+</body>
+</html>
